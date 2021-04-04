@@ -1,0 +1,28 @@
+<html>
+<title>Open Android Application</title>
+<head>
+    <script>
+      // function getParameterByName(name, url = window.location.href) {
+      //   name = name.replace(/[\[\]]/g, '\\$&');
+      //   var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      //     results = regex.exec(url);
+      //   if (!results) return null;
+      //   if (!results[2]) return '';
+      //   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      // }
+      var a = window.location.search
+    </script>
+</head>
+<body bgcolor="#f5f5dc">
+<div style="position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%)">
+    <a href="intent://shoppingapp/#Intent;scheme=mukesh;package=com.shoppingproject;" onclick="location.href=this.href+'S.content='+a+';end';return false;">Open Application</a><br>
+    <a href="http://192.168.0.2:19006">Open In Web Browser</a><br>
+<!--    <a><script>a</script></a>-->
+</div>
+</body>
+</html>
