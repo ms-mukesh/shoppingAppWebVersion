@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+    Linking
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { GoBackHeader, ImagePreview, Loading, rupeesIcon } from '../../common';
@@ -23,7 +24,7 @@ import {
 
 import {hp, wp, normalize, color, IsAndroidOS, IsIOSOS} from '../../../helper/themeHelper';
 import { center } from '../../../helper/styles';
-import { star_empty, star_filled } from '../../../assets/images';
+import {cross_black_icon, star_empty, star_filled} from '../../../assets/images';
 import AutoCompleteModel from '../../common/AutoCompleteBox';
 // import FastImage from 'react-native-fast-image';
 
@@ -31,9 +32,10 @@ const ProductDetailScreen = (props) => {
   const { productId, productImage = null, price = 0, productName = '',isFromShareLink=false } = props.route.params;
   const PRODUCT_SIZE = ['S', 'M', 'L', 'XL', 'XXL'];
   const [productDetails, setProductDetail] = useState(null);
+  const [showInApp, setShowInApp] = useState(true);
 
   const dispatch = useDispatch();
-  console.log('data---', productDetails);
+  console.log('data---', isFromShareLink);
   const scrollRef = useRef(null);
   const [imagePreviewFlag, setImagePreviewFlag] = useState(false);
   // const [productDetails,setProductDetail] = useState(null)
@@ -418,6 +420,27 @@ const ProductDetailScreen = (props) => {
           // selectedValue={User[currentKey]}
         />
       )}
+      {isFromShareLink && showInApp && (IsAndroidOS || IsIOSOS) &&
+      <View style={{height:hp(10),width:wp(100),flexDirection:'row',alignItems:'center',justifyContent:'space-between',padding:hp(2)}}>
+        <Text style={{fontSize:normalize(16),color:color.darkOrange,fontWeight:'700'}}>want to check in our app?</Text>
+        <View style={{flexDirection:'row',alignItems:'center'}}>
+        <TouchableOpacity onPress={()=>{
+          setShowInApp(false)
+          Linking.openURL('intent://shoppingapp/#Intent;scheme=mukesh;package=com.shoppingproject;S.content=?'+productId+';end')
+        }}>
+          <View style={{height:hp(5),width:wp(30),borderRadius:hp(1),borderWidth:hp(0.1),backgroundColor:'transparent',alignItems:'center',justifyContent:'center'}}>
+            <Text style={{fontSize:normalize(13),color:color.themeBtnColor,fontWeight:'700'}}>Open In App</Text>
+          </View>
+        </TouchableOpacity>
+          <TouchableOpacity onPress={()=>{
+            setShowInApp(false)
+          }}>
+            <Image source={cross_black_icon} style={{height:hp(3.8),width:wp(3.8),marginLeft:wp(2)}}/>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      }
       <GoBackHeader
         onCartIconPress={() => {
           props.navigation.navigate('CartDetail');

@@ -32,6 +32,7 @@ import HTML from 'react-native-render-html';
 import { setLoaderStatus } from '../../redux/actions/dashboardAction';
 import {getCustomerOrder, getMyAddresses} from "../../redux/actions/userActions";
 import {getRecentItemList} from "../../redux/actions/homeScreenActions";
+import {TextInput} from "react-native-web";
 
 const LoginScreen = (props) => {
   const {
@@ -205,6 +206,7 @@ function newOpen(){//184 064 323 438
                     style={floatingStyle}
                     value={userdata.mobile}
                     returnKeyType={'done'}
+                    placeholder={"Mobile Number"}
                     onBlur={() => {
                       if (userdata.mobile.length === 0) {
                         setUsernameState(false);
@@ -246,6 +248,7 @@ function newOpen(){//184 064 323 438
                     value={userdata.password}
                     returnKeyType={'done'}
                     secureTextEntry={true}
+                    placeholder={"Password"}
                     onBlur={() => {
                       if (userdata.password.length === 0) {
                         setIsValidPwd(false);
@@ -442,12 +445,12 @@ const style = StyleSheet.create({
     marginHorizontal: wp(2),
   },
   floatingStyle: {
-    color: 'red',
-    fontSize: normalize(20),
+    color: color.black,
+    fontSize: normalize(15),
   },
   floatingInputStyle: {
     borderWidth: 0,
-    fontSize: normalize(14),
+    fontSize: normalize(12),
     // fontFamily: font.robotoRegular,
     height: isANDROID ? hp(6) : hp(5),
     marginTop: isANDROID ? hp(3) : hp(2),

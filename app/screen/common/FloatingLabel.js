@@ -149,12 +149,15 @@ class FloatingLabel extends Component {
       elementStyles.push(this.props.style);
     }
 
-    return (
-      <View style={elementStyles}>
-        {this._renderLabel()}
-        <TextInput allowFontScaling={false} {...props} />
-      </View>
-    );
+      return (
+          <TextInput allowFontScaling={false} {...props} />
+      );
+    // return (
+    //   <View style={elementStyles}>
+    //     {this._renderLabel()}
+    //     <TextInput allowFontScaling={false} {...props} />
+    //   </View>
+    // );
   }
 }
 

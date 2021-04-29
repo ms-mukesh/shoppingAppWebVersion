@@ -160,7 +160,7 @@ const HomePage = (props) => {
   };
 
   useEffect(() => {
-    Linking.openURL('intent://shoppingapp/#Intent;scheme=mukesh;package=com.shoppingproject;S.content=WebContent;end')
+    // Linking.openURL('intent://shoppingapp/#Intent;scheme=mukesh;package=com.shoppingproject;S.content=WebContent;end')
     dispatch(getAllCategories()).then(async (res) => {
       if (res) {
         await setCategories(res);

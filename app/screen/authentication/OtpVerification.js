@@ -51,7 +51,6 @@ const OtpVerificationScreen = (props) => {
     checkBoxView,
   } = style;
   const { otp = null, phoneNumber = null } = props.route.params;
-  isANDROID ? alert(otp) : console.log(otp);
   const [checkBoxState, setCheckBoxState] = useState(0);
   const temp = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -77,6 +76,7 @@ const OtpVerificationScreen = (props) => {
     setUserData({ ...userdata, password: '' });
   };
   useEffect(() => {
+    alert(otp)
     if (!isWEB) {
       AsyncStorage.getItem('userLoginDetail').then((res) => {
         if (res) {
